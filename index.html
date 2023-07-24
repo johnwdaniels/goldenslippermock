@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Selection</title>
+    <script>
+        function updateImage(image) {
+            document.getElementById("main-image").src = image;
+        }
+
+        function updateOverlay(overlay) {
+            document.getElementById("overlay-image").src = overlay;
+        }
+
+        function updateOverlay2(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function () {
+                var dataURL = reader.result;
+                document.getElementById("overlay2-image").src = dataURL;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearOverlay2() {
+            document.getElementById("overlay2-image").src = "blankLogo.png";
+        }
+
+        function clearOverlay2() {
+            document.getElementById("overlay2-image").src = "blankLogo.png";
+            var fileInput = document.getElementById("overlay2-file");
+            fileInput.type = "";
+            fileInput.type = "file";
+        }
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+
+    <style>
+        #main-image,
+        #overlay-image {
+            width: 700px;
+            height: 700px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <style>
+        #overlay2-image {
+            width: 125px;
+            height: 125px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -75%);
+            object-fit: contain;
+            object-position: center;
+        }
+    </style>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <img id="main-image" src="black.jpg">
+    <img id="overlay-image" src="label1.png">
+    <img id="overlay2-image" src="blankLogo.png" width="125" height="125">
+    <br>
+    <div>
+        <label for="image-select">Choose Your Vessel:</label>
+        <select id="image-select" onchange="updateImage(this.value)">
+            <option value="white.jpg">Choose A Color</option>
+            <option value="white.jpg">Matte White</option>
+            <option value="black.jpg">Matte Black</option>
+            <option value="clear.jpg">Clear</option>
+            <option value="amber.jpg">Amber</option>
+            <option value="largeWhite.jpg">Large Matte White</option>
+            <option value="largeBlack.jpg">Large Matte Black</option>
+            <option value="largeGreen.jpg">Large Matte Dark Green</option>
+            <option value="largeTerracotta.jpg">Large Matte Terracotta</option>
+            <option value="largeWine.jpg">Large Matte Wine</option>
+        </select>
+    </div>
+    <br>
+    <div>
+        <label for="overlay-select">Choose Your Scent:</label>
+        <select id="overlay-select" onchange="updateOverlay(this.value)">
+            <option>Choose A Scent</option>
+            <option value="label1.png">#1 Oakmoss & Amber</option>
+            <option value="label2.png">#2 Smoked Teakwood</option>
+            <option value="label3.png">#3 Lavender Driftwood</option>
+            <option value="label4.png">#4 Palo Santo</option>
+            <option value="label5.png">#5 Black Coral, Fir, Moss</option>
+            <option value="label6.png">#6 Fir & Amber</option>
+            <option value="label7.png">#7 Corriander, Rose, Sandalwood</option>
+            <option value="label8.png">#8 Cactus Flower, Jade, Patchouli</option>
+            <option value="label9.png">#9 Ozone, Musk, Cedar</option>
+            <option value="label10.png">#10 Bergamot Ginger</option>
+            <option value="label11.png">#11 Agave, Citron</option>
+            <option value="label12.png">#12 Santal Lily of the Valley</option>
+            <option value="label13.png">#13 Lavender & Lemon</option>
+            <option value="label14.png">#14 Cucumber Watermelon, Dry Gin, Cypress</option>
+            <option value="label15.png">#15 Lime, Salt, Guava</option>
+            <option value="label16.png">#16 Lemon Verbena</option>
+            <option value="label17.png">#17 Coconut Milk, Mangosteen</option>
+            <option value="label18.png">#18 Sea Salt, Amber, Orange</option>
+            <option value="label19.png">#19 Cinnamon Vanilla Spruce</option>
+            <option value="label20.png">#20 Cinnamon, Clove, Ginger</option>
+            <option value="label21.png">#21 Douglas Fir, Firewood</option>
+            <option value="label22.png">#22 Plum & Black Amber</option>
+            <option value="label23.png">#23 Balsam, Cypress, Wassail</option>
+            <option value="label24.png">#24 Fir Balsam</option>
+            <option value="label25.png">#25 Cinnamon, Patchouli, Cedarwood</option>
+            <option value="label26.png">#26 Apple Cinnamon Orange</option>
+            <option value="label27.png">#27 Spiced Honey & Tonka</option>
+        </select>
+    </div>
+    </br>
+    <div>
+        <label for="overlay2-file">Upload Your Logo (File Must Be .png):</label>
+        <input type="file" id="overlay2-file" accept=".png" onchange="updateOverlay2(event)">
+        <button onclick="clearOverlay2()">Clear File</button>
+    </div>
+
+</body>
+
+</html>
